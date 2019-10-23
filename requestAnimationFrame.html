@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function repeatOften(){
+            console.log(1);
+            requestAnimationFrame(repeatOften)
+        }
+        requestAnimationFrame(repeatOften);
+    </script>
+</body>
+</html>

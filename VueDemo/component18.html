@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <app>
+            <!-- {{message}} -->
+        </app>
+    </div>
+    <script>
+        Vue.component('app',{
+            template:'\
+           <div> \
+           Hello \
+           <slot>来自子组件的slot默认内容</slot>\
+           </div> \
+            '
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                message:'world'
+            },
+            mounted:function(){
+                // this.$slots.default访问默认的
+                // this.$slots.a访问具名的
+            }
+        })
+        </script> 
+</body>
+</html>

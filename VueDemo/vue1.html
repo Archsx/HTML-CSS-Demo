@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .active{
+        background: red;
+    }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js">
+    </script>
+    <div id="tabsDemo">
+        <ol class="nav">
+            <!-- <li @click="currentTab = 1" :class="{active:currentTab===1}">T1</li>
+            <li v-on:click="currentTab = 2" :class="{active:currentTab===2}">T2</li>
+            <li v-on:click="currentTab = 3" :class="{active:currentTab===3}">T3</li> -->
+            <li v-for="(pane,index) in panes" v-on:click="currentTab = index+1" v-bind:class="{active:currentTab === index+1}">
+                tab {{index+1}}
+            </li>
+        </ol>
+        <!-- <ol class="panes">
+            <li v-if="currentTab === 1"> p1 </li>
+            <li v-if="currentTab === 2"> p2 </li>
+            <li v-if="currentTab === 3"> p3 </li>
+        </ol> -->
+        <!-- <ol class="panes">
+            <li v-bind:style="{display:currentTab === 1?'list-item':'none'}"> p1 </li>
+            <li v-bind:style="{display:currentTab === 2?'list-item':'none'}"> p2 </li>
+            <li v-bind:style="{display:currentTab === 3?'list-item':'none'}"> p3 </li>
+        </ol> -->
+        <ol class="panes">
+            <li v-for="(pane, index) in panes" v-bind:style="{display:currentTab === index+1?'list-item':'none'}">
+                {{pane.text}}
+            </li>
+        </ol>
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#tabsDemo',
+            data:{
+                currentTab:1,
+                panes:[
+                    {text:1},
+                    {text:2},
+                    {text:3}
+                ]
+            }
+        })
+    </script>
+</body>
+</html>

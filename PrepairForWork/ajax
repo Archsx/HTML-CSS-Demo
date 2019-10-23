@@ -1,0 +1,15 @@
+HTTP请求 
+1. GET(动作) /xxx?a=1 (请求URI) HTTP/1.1（协议版本号）
+2. Host:baidu.com(主机名)
+   Content-Type:application/xxx-www-form-urlencoded
+   KEY:VALUE //1和2都是报文首部 1是请求行,2是首部字段
+3. CR + LF(回车换行)//空行
+4. name=ff&age=18 //报文实体
+
+
+HTTP 响应
+1. HTTP/1.1(协议版本号) 200（状态吗） OK（状态描述）
+2.Content-Type:text/html;charset=utf-8 (这里可由SetHeader()进行设置)
+  KEY:VALUE
+3. CR + LF(回车换行)//空行
+4.<!DOCTYPE> <h1>hi</h1> (HTML字符串)

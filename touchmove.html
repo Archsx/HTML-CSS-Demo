@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        *{
+            margin: 0;
+            padding: 0
+        }
+        #app{
+            background: #ddd;
+            display: block;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="app" width="375" height="667">
+    </canvas>
+    <script>
+        var app = document.querySelector('#app')
+        app.addEventListener('touchstart',function(e){
+
+        })
+        app.addEventListener('touchmove',function(e){
+            var {pageX,pageY} = e.touches[0]
+        // let pageX = e.touches[0].pageX;
+        // let pageY = e.touches[0].pageY;
+            var div = document.createElement('div')
+            div.style.position = 'absolute'
+            div.style.top =pageY +'px';
+            div.style.left =pageX + 'px';
+            div.style.height = '4px';
+            div.style.width = '4px';
+            div.style.borderRadius = '2px';
+            div.style.background = "blue";
+            document.body.appendChild(div);
+            
+        })
+        app.addEventListener('touchend',function(e){
+            
+        })
+    </script>
+
+</body>
+</html>

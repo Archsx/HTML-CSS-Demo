@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .wrap{
+        position: absolute;/*The top CSS property specifies part of the position of positioned elements. It has no effect on non-positioned elements.
+
+For absolutely positioned elements (those with position: absolute or position: fixed), it specifies the distance between the top margin edge of the element and the top edge of its containing block.
+
+For relatively positioned elements (those with position: relative), it specifies the amount the element is moved below its normal position.*/
+        width: 400px;
+        height: 200px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);/* translate(-50%,-50%) 作用是，往上（x轴）,左（y轴）移动自身长宽的 50%，以使其居于中心位置*/
+        /*margin-left: -200px;
+        margin-top: -100px;*/
+        box-shadow: 0 0 3px #000;
+    }
+    .head{
+        padding: 10px;
+        color: #fff;
+        background: #000
+    }
+    .content{
+        padding: 10px;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="head">
+            请登陆      
+        </div>
+        <div class="content">
+            没有帐号？
+        </div>
+    </div>
+</body>
+</html>

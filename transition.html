@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    p{padding-left:60px;}
+#foo{
+border-radius:50px;
+width:50px;
+height:50px;
+background:#c00;
+position:absolute;
+left: 0;
+top: 0;
+/*-moz-transition: all 0.1s; 
+-webkit-transition: all 0.1s;  
+-ms-transition: all 0.1s;  
+-o-transition: all 0.1s;  */
+/*transition-property: left top ;
+transition-duration: 1s;*/
+
+}
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <p>Click anywhere to move the ball</p>
+<div id="foo"></div>
+<script>
+    var f = document.getElementById('foo');
+document.addEventListener('touchmove', function(ev){
+    console.log(ev)
+    f.style.left = (ev.touches[0].pageX)+'px';
+    f.style.top = (ev.touches[0].pageY)+'px';
+},false);    
+</script>
+</body>
+</html>

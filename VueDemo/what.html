@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.min.js"></script>
+    <div id="app">
+  <li v-show="currentTab === 1">
+    <child key="1" :items="projects"></child>
+  </li>
+  <li v-show="currentTab === 2">
+    <child key="2" :items="awards"></child>
+  </li>
+</div>
+<template id="child-template">
+<div>
+    <el-form>
+        <div v-for="(item,index) in items" :key="index">
+            <div>
+                <input v-model="item[index]">
+            </div>
+            <button class="el-icon-close" @click="remove(index)">X</button>
+        </div>
+        <button type="primary" @click="add">Add</button>
+    </el-form>
+</div>
+</template>
+<script>
+    Vue.component('child', {
+  template: '#child-template',
+  props: ['items'],
+  computed: {
+    keys: function() {
+      return this.items.length ? Object.keys(this.items[0]) : [];
+    },
+  },
+  methods: {
+    add: function() {
+      let temp = {}
+      this.keys.map((key) => {
+        temp[key] = ''
+      })
+      this.items.push(temp)
+      console.log(this.items)
+    },
+    remove: function(index) {
+      this.items.splice(index, 1)
+    }
+  }
+});
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      currentTab: 1,
+      awards: [{
+        name: ''
+      }],
+      projects: [{
+        content: ''
+      }]
+    }
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <input type="" name="" value="" v-model="inputValue" v-on:input="request">
+        <ol>
+            <li v-for="result in results">
+                <a href="" v-bind:href="result.html_url" target="_blank">
+                {{result.full_name}}
+                </a>
+            </li>
+        </ol>
+    </div>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                results:[],
+                timer:null,
+                inputValue:null
+            },
+            methods:{
+                request:function(){
+                    if(this.timer){
+                        clearTimeout(this.timer)
+                    }
+                    this.timer = setTimeout(()=>{
+                       this.get()
+                    },500)
+                },
+                get:function(){
+                    axios.get("https://api.github.com/users/"+this.inputValue+"/repos").then((results)=>{
+                        this.results = results.data
+                    })
+                }
+           }
+        })
+    </script>
+</body>
+</html>

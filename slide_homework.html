@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ol {
+            list-style: none;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            /*align-items: flex-start;*/
+            /*min-height: 100vh;*/
+        }
+
+        /*.slide {
+            border: 1px solid black;
+        }*/
+
+        /*.pic {
+            width: 920px;
+            height: 400px;
+            overflow: hidden;
+            /*border: 1px solid red;*/
+            /*margin-top: 5em;
+            display: flex;
+        }
+        .pic>ol>li{
+            flex-shrink: 0;
+            width: 100%;
+        }*/
+        .pic {
+            overflow: hidden;
+        }
+        .pic>ol{
+            display: flex;
+            margin-top: 5em;
+            height: 400px;
+            width: 920px;
+            transition: transform 0.2s;
+
+        }
+        .pic >ol>li{
+            flex-shrink: 0;
+        }
+
+        .controls ol {
+            margin: 0 auto;
+            border: 1px solid red;
+            padding: 10px;
+            width: 300px;
+            display: flex;
+            justify-content: space-around
+        }
+
+        /*.controls ol::after {
+            content: '';
+            display: block;
+            clear: both;
+        }*/
+
+        .controls li {
+            /*float: left;*/
+            background: #ccc;
+            width: 50px;
+            height: 5px;
+            
+
+            
+            
+        }
+        .controls li.active{
+            background: dodgerblue;
+        }
+    </style>
+</head>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js">
+    
+</script>
+<body>
+    <div class="slide">
+        <div class="pic">
+            <ol>
+                <li><img src="http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/macbook.jpg"
+                        alt="" width="920px" height="400px"></li>
+                <li><img src="http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/iphone.jpg"
+                        alt=""></li>
+                <li><img src="http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/imac.jpg"
+                        alt=""></li>
+                <li><img src="http://demo.tutorialzine.com/2009/11/beautiful-apple-gallery-slideshow/img/sample_slides/info.jpg"
+                        alt=""></li>
+            </ol>
+        </div>
+        <div class="controls">
+            <ol>
+                <li class="active">
+                    <div class="item">
+                    </div>
+                </li>
+                <li>
+                    <div class="item">
+                    </div>
+                </li>
+                <li>
+                    <div class="item">
+                    </div>
+                </li>
+                <li>
+                    <div class="item">
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        $('.controls').on('click',"li",function(e){
+            let element = $(e.target);
+            let width = $('.pic ol li img').width()
+            
+            let index = element.index();
+            console.log(index)
+            element.addClass('active').siblings('.active').removeClass('active')
+            $('.pic ol').css({
+                transform:`translateX(${-width*index}px)`
+            })
+            
+        })    
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <h2>{{dataObj.text}}</h2>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                dataObj: {}
+
+            },
+            mounted: function () {
+                var self = this;
+
+                /**
+                 * 异步请求模拟
+                 */
+                // setTimeout(function () {
+                //     // self.dataObj = {}
+                //     self.dataObj['text'] = 'new text';
+                //     console.log(self.dataObj)
+                // }, 3000);
+                                    // self.dataObj = {}
+                    self.dataObj['text'] = 'new text';
+            }
+        })
+    </script>
+</body>
+
+</html>

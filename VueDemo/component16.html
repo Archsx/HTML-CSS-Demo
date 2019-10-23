@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        {{wvalue}}
+        <my-com v-model="wvalue"></my-com>
+        <button @click="handler">-1</button>
+    </div>
+    <script>
+        Vue.component('my-com',{
+            props:{
+                value:{//注意这里必须叫value,value和下面的input是一一对应的
+                    type:Number
+                }
+            },
+            template:'<div>{{currentValue}} <button @click="handleClick">+1</button></div>',
+            data:function(){
+                return {
+                    currentValue:this.value
+                }
+            },
+            watch:{
+                value:function(newValue){
+                    this.currentValue = newValue
+                }
+            },
+            methods:{
+                handleClick:function(){
+                    this.currentValue++;
+                    this.$emit('input',this.currentValue);//注意！！！这里的事件名必须为input，不能为其他的
+                }
+            }
+        })        
+        new Vue({
+            el:'#app',
+            data:{
+                wvalue:1
+            },
+            methods:{
+                handler:function(){
+                    this.wvalue--;
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

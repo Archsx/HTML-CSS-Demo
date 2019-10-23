@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .parent{
+        width: 200px;
+        height: 200px;
+        display: flex;
+        border: 1px solid black;
+        margin: 0 auto;
+        box-shadow: 1px 1px 1px;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-content: space-between;
+        
+    }
+    .child{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: black;
+    }
+    /*.child:nth-child(2){
+        align-self: center;
+    }
+    .child:nth-child(3){
+        align-self: flex-end;
+    }*/
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+        </div>
+        <div class="child">
+        </div>
+        <div class="child">
+        </div>
+        <div class="child">
+        </div>
+    </div>
+</body>
+</html>

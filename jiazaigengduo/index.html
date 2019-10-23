@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>加载更多</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        #list {
+            max-width: 680px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            /* outline: 1px solid red; */
+            justify-content: space-between;
+        }
+
+        #list>li {
+            width: calc(33.3333% - 10px);
+            /* outline: 1px solid green; */
+        }
+
+        /* #list>li img {
+            width: 100%;
+            height: auto;
+            自动算 这两行是为了让图片能占满li，因为图片本来是200px，但是这样的话不能居中,所以加上这两行
+         }  */
+         .oneToOne{
+             padding-top: 100%;
+             position:relative;
+         }
+         .oneToOne img{
+             position: absolute;
+             width: 100%;
+             height: 100%;
+             left: 0;
+             top: 0;
+         }
+    </style>
+</head>
+
+<body>
+    <ol id="list">
+
+    </ol>
+    <div style="text-align:center;margin:16px 0;">
+        <button type="" class="button" id="loadMore">Load More</button>
+    </div>
+
+
+    <script>
+        let n = 1;
+        let list = document.querySelector('#list')
+        for (let i = 0; i < 9; i++) {
+            let li = document.createElement('li');
+            let div = document.createElement('div')
+            div.className = "oneToOne";
+            let img = document.createElement('img')
+            div.appendChild(img)
+
+            // let image = document.createElement('img')
+            // image.width = 200;
+            // image.height = 200;
+            img.src = "//via.placeholder.com/200x200?text="+Math.random().toFixed(6);
+            let p = document.createElement('p');
+            p.textContent = `这是第${i+1}段话`;
+            li.appendChild(div);
+            li.appendChild(p)
+            list.appendChild(li)
+        }
+
+        loadMore.onclick = function(){
+            let xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                // list.innerHTML = xhr.responseText这样会覆盖原来的html
+                // list.insertAdjacentHTML("beforeend",xhr.responseText)
+                // let lineArray = xhr.responseText.split('\n')
+                // lineArray.forEach(function(ele){
+                    // console.log(ele.split('|'))
+                    // if(ele !== ''){
+                    //     console.log(ele.split('|'))
+                    // }
+
+                // })
+                n += 1;
+                let response = xhr.responseText;
+                // JSON.parse输入符合JSON语法的字符串,输出JSON对应的数据 array/object/number/string
+                let data = JSON.parse(response)
+                for(let ele of data.content){
+                    let liString = `
+                        <li>
+                            <div class="oneToOne">
+                                <img src="${ele.url}">
+                            </div>
+                            <p>${ele.text}</p> 
+                        </li>       
+                    `
+                    list.insertAdjacentHTML('beforeend',liString)
+                }
+                if(data.hasNextPage === false){
+                    loadMore.disabled = true;
+                    loadMore.textContent = "没有更多啦"
+                }
+            };
+            xhr.open("GET",`./index${n}.html`)
+            xhr.send();
+        }
+
+
+        window.onscroll = function(){
+            var doc = document.documentElement;
+            // var top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+            var clientHeight = doc.clientHeight
+            var viewportOffset = loadMore.getBoundingClientRect()
+            var buttonTop = viewportOffset.top;
+            if(buttonTop > clientHeight){
+
+            }else{
+                loadMore.click()
+            }
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>
+<style>
+    .button {
+        background: #3498db;
+        border: none;
+        background-image: linear-gradient(to bottom, #3498db, #2980b9);
+        -webkit-border-radius: 28;
+        -moz-border-radius: 28;
+        border-radius: 28px;
+        font-family: Arial;
+        color: #ffffff;
+        font-size: 20px;
+        padding: 10px 20px 10px 20px;
+        text-decoration: none;
+    }
+
+    .button:hover {
+        background: #3cb0fd;
+        background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+        text-decoration: none;
+    }
+</style>

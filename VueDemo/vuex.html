@@ -1,0 +1,87 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        {{value}}
+        <button type="" @click="add">+1</button>
+        <button type="" v-on:click="decrease">-1</button>
+    </div>
+    <script>
+    new Vue({
+        el:"#app",
+        data:{
+            value:1
+        },
+        methods:{
+            add:function(){
+                this.value++
+            },
+            decrease:function(){
+                this.value--
+            }
+        }
+    })
+
+</script>
+
+
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/vuex/2.4.1/vuex.min.js"></script>
+    <div id="app">
+        <p>
+            {{count}}
+            <button @click="inc">+</button>
+            <button @click="dec">-</button>
+        </p>
+    </div>
+    <script>
+        const store = new Vuex.Store({
+            state:{
+                count:0
+            },
+            mutations:{
+                increase:state => state.count++,
+               decrease:state => state.count--
+            }
+        })
+        const app = new Vue({
+            el:'#app',
+            computed:{
+                count:function(){
+                    return store.state.count
+                }
+            },
+            methods:{
+                inc:function(){
+                    store.commit('increase')
+                },
+                dec:function(){
+                    store.commit('decrease')
+                }
+            }
+        })
+
+
+
+</script>
+</body>
+</html>

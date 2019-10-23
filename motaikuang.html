@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    .modal-dialog{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0,0,0,0)
+    }
+    .modal-dialog .bt{
+        display: inline-block;
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    .dialog a{
+        text-decoration: none;
+        color: #333;
+    }
+    .modal-dialog .cover{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        opacity: 0.4;
+        z-index: 99;
+    }
+    .modal-dialog .modal-ct{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width:400px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        background: #fff;
+        z-index: 100;
+
+    }
+    /* .modal-dialog .modal-ct .header{
+        /* position: relative; */
+        /* height: 36px;
+        line-height: 36px;
+        border-bottom: 1px solid #ccc;
+        border: 1px  solid black;
+        
+    }
+    .modal-dialog .modal-ct .header h1{
+        padding-left: 10px;
+        font-size: 16px;
+        line-height: 36px;
+        border: 1px solid red;
+    }
+    .modal-dialog .modal-ct .header .close{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        line-height: 1;
+        border: 1px solid red;
+    } */ 
+    .header{
+        height: 36px;
+        padding: 10px 0;
+        /* border: 1px solid red; */
+    }
+    .header::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .header h1{
+        font-size: 16px;
+        float: left;
+        margin-left: 10px;
+    }
+    .header a{
+        float: right;
+        text-decoration: none;
+        margin-right: 15px;
+        line-height: 16px;
+        display: inline;
+        /* position: relative;
+        top: -1px; */
+        font-size: 16px;
+        /* margin-bottom: 3px; */
+    }
+    .modal-dialog .modal-ct .content{
+        padding: 10px;
+    }
+    .modal-dialog .modal-ct .footer{
+        padding: 10px;
+        border-top: 1px solid #eee;
+    }
+    .modal-dialog .modal-ct .footer::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .modal-dialog .modal-ct .footer .btn{
+        float: right;
+        margin-left: 10px;
+    }
+     .open{
+        display: block;
+    } 
+    </style>
+</head>
+
+<body>
+   <div class="btn-group">
+       <button type="" id="btn-modal" >确认</button>
+   </div>
+    <div id="modal-1" class="modal-dialog">
+        <div class="modal-ct">
+            <div class="header">
+                <h1>确定要离开此页面吗</h1>
+                <a href="#" class="close">x</a>
+            </div>
+            <div class="content">
+                <p>内容1</p>
+                <p>内容2</p>
+            </div>
+            <!-- <div class="footer">
+                <a href="#" class="btn btn-confirm">确定</a>
+                <a href="#" class="btn btn-cancel">取消</a>
+            </div> -->
+        </div>
+    </div>    
+    <script>
+        var btn = document.querySelector('#btn-modal');
+        var modal = document.querySelector('#modal-1');
+        var modalCt = document.querySelector('#modal-1 .modal-ct');
+        var close = document.querySelector('modal-1 .close')
+
+
+
+        btn.addEventListener('click',function(){
+            modal.classList.add('open')
+        })
+        close.addEventListener('click',function(){
+            modal.classList.remove('open')
+        })
+    </script>
+
+
+
+
+
+
+</body>
+</html>

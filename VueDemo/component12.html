@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        Hello Vue
+        <my-component :init-count="count"></my-component>
+        <!-- 注意这里的数据流向，上面的count其实是父组件里面的count(也就是data里面的count:1)，由此数据从父组件传入子组件
+        子组件里面的props显式的声明了子组件接受的参数为initCount，这里注意由于单向数据流所以我们这里最好不要直接使用
+        initCount(template里面用的是message和count)，这里的message和count是组件内部的data函数所返回的值(假如initCount是对象或者数组的话，
+        那么需要进行深拷贝处理，这里只是我的猜测)，由此，完成了从父组件到子组件的数据传递流程 -->
+    </div> 
+    <script>
+        const Child = {
+            props:{
+                initCount:Number
+            },
+            template:'<div>我是局部注册的组件{{message}}{{count}}</div>',
+            data:function(){
+                return {
+                    message:"Hello Component",
+                    count:this.initCount
+                }
+            },
+            methods:{
+                change:function() {
+                    this.count = 2
+                }
+            }
+
+        }
+        new Vue({
+            el:'#app',
+            components:{
+                'my-component':Child
+            },
+            data:{
+                count:1
+            }
+        })
+    </script>
+</body>
+</html>

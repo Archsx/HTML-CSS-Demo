@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button type="" id="button1">putin</button>
+    <button type="" id="button2">takeout</button>
+    <div id="output"></div>
+    <script>
+        var stack = [];
+
+        function putin(name){
+            stack.push(name);
+            output.textContent = name + '已经放入箱子啦';
+            return;
+        }
+
+        function takeout(){
+            if(stack.length === 0){
+                output.textContent = '没书啦';
+                return ;
+            }
+            var bookname = stack.pop();
+            output.textContent = bookname + "已经取出"
+            return bookname;
+        }
+
+        button1.onclick = function(){
+            putin("高等数学" + Math.random())
+        }
+        button2.onclick = function(){
+            takeout()
+        }
+
+    </script>
+</body>
+</html>

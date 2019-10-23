@@ -1,0 +1,48 @@
+
+/* .carrot{
+  color: orange
+}
+.spinach{
+  color: green
+}
+#first{
+  font-style: italic
+}
+p#second{
+  color: blue
+}
+strong {
+  color: red !important
+} */
+
+a.homepage:link,a.homepage:visited{
+  padding: 1px 10px 1px 10px;
+  color:slategray;
+  background: #555;
+  border: 1px outset rgba(50,50,50,.5);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-style: italic;
+  text-decoration: none;
+
+}
+
+a.homepage:hover,a.homepage:focus{
+  background-color: #224283;
+}
+a.homepage:active{
+  background-color: lightblue
+}
+
+div.menu-bar ul ul {
+  display: none;
+}
+
+div.menu-bar li:hover > ul {
+  display: block;
+}
+.box{
+  width: 200px;
+  height: 200px;
+  background: red;
+}

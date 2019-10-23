@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* input.error{
+            border-color:  red;
+        }
+       form span{
+            display: none
+        }
+        .errorMessage {
+            display: inline;
+            border: 1px solid red;
+        } */
+
+        .errorMessage {
+            display: none;
+        }
+
+        input.error {
+            border-color: red;
+        }
+
+        input.error + .errorMessage {
+            color: red;
+            display: inline
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/login" method="POST" id="loginForm">
+        <div>
+            <label>
+           姓名
+           <input type="text" name="username" value="" class=""> 
+           <span class="errorMessage">错误信息</span>
+           </label>
+        </div>
+        <div>
+            <label>密码
+            <input type="password" name="password" value="" class="">
+            <span class="errorMessage">错误信息</span>
+            </label>
+        </div>
+        <div>
+            <input type="submit" name="" value="提交">
+        </div>
+    </form>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js">
+    </script>
+    <script>
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            let username = loginForm.username.value;
+            let password = loginForm.password.value;
+            let valid = true;
+            $('input.error').removeClass('error')
+            // if (username.trim() === '') {
+            //     $('input[name="username"]').addClass('error')
+            //         .next('.errorMessage').text('用户名不能为空')
+            // }
+            // if (password === '') {
+            //     $('input[name="password"]').addClass('error')
+            //         .next('.errorMessage').text('密码不能为空')
+            // }
+            // if (!valid) {
+            //     return;
+            // }
+            let xhr = new XMLHttpRequest();
+            // xhr.onload = function(){
+            //     alert('Ready')
+            // }
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status >= 400) {
+                    // let object = JSON.parse(xhr.responseText);
+                        let {errors} = JSON.parse(xhr.responseText)
+                    for (let key in errors) {
+                        let value = errors[key]
+                        console.log(value)
+                        $(`input[name="${key}"]`).addClass('error')
+                            .next('.errorMessage').text(value)
+                    }
+                    } else {
+                        location.href = '/home'
+                    }
+                    
+                }
+            }
+            // xhr.open('GET',`/login?username=${username}&password=${password}`);
+            // // xhr.setRequestHeader('foo','bar')
+            // xhr.send()
+            xhr.open('POST', '/login')
+            xhr.send(`username=${username}&password=${password}`)
+        })
+    </script>
+</body>
+
+</html>

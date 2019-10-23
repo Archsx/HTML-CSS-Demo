@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="toSubmit">
+        <label>请输入y的值 <input type="text" name="yyy" value=""></label><br>
+        <label>请输入z的值 <input type="text" name="zzz" value=""></label><br>
+        <button type="submit" id="btn">点我提交啊</button>
+    </form>
+    <script>
+        toSubmit.addEventListener('submit',function(e){
+            e.preventDefault();
+            let yyy = toSubmit.yyy.value;
+            let zzz = toSubmit.zzz.value;
+            let xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState===4){
+                    console.log(xhr.responseText)
+                }
+            }
+            xhr.open('GET',`/xxx?yyy=${yyy}&zzz=${zzz}`)
+            xhr.send();
+        })
+    </script>
+</body>
+
+</html>

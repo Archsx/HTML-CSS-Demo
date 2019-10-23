@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    jsonp('http://qq.com/xxx.js',function(data){
+        console.log("第一次")
+        console.log(data)
+    })
+    jsonp('http://qq.com/xxx.js',function(data){
+        console.log("第二次")
+        console.log(data)
+    })
+    function jsonp(url,fn){
+        var functionName = 'Frank'
+        window[functionName] = fn
+
+
+        var script = document.createElement('script')
+        script.src = url + "?callback=" + functionName
+        cocument.head.appendChild(script)
+    }
+    </script>
+</body>
+</html>

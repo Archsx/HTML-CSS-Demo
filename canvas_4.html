@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="" href="http://at.alicdn.com/t/font_dro5eh6p4ro4j9k9.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            overflow: hidden;
+        }
+        
+        #app {
+            background: #ddd;
+            display: block;
+        }
+        
+        .actions {
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 4px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="actions">
+        <label><input type="radio" name="penType" value="pen" checked><span class="iconfont icon-pen"></span></label>
+        <label><input type="radio" name="penType" value="eraser"><i class="iconfont icon-eraser"></i></label>
+        <button type="" id="save"><i class="iconfont icon-save"></i></button>
+    </div>
+    <canvas id="app" width="375" height="667"></canvas>
+    <script>
+ let previousPoint;
+ let canvas = document.querySelector('#app') 
+ let clientWidth = document.documentElement.clientWidth;
+ let clientHeight = document.documentElement.clientHeight 
+  canvas.width = clientWidth; 
+  canvas.height = clientHeight; 
+ let context= canvas.getContext('2d'); 
+ let width = canvas.width,height=canvas.height; 
+ if (window.devicePixelRatio) { 
+     canvas.style.width= width + "px";
+     canvas.style.height = height + "px"; 
+     canvas.height = height * window.devicePixelRatio; 
+     canvas.width = width* window.devicePixelRatio; 
+     context.scale(window.devicePixelRatio, window.devicePixelRatio); 
+    }
+     context.fillStyle = "green"
+     context.strokeStyle = 'green' 
+     canvas.addEventListener('touchstart',function(e){ 
+         let {pageX,pageY} = e.touches[0]; 
+         context.beginPath();
+         context.arc(pageX,pageY,5,0,Math.PI*2,false) 
+         context.fill() 
+        })
+     canvas.addEventListener('touchmove',function(e){ 
+         e.preventDefault();//加入这一句话之后，屏幕都不能缩放了
+         let penType=document.querySelector('input[type=radio]:checked').value 
+         let {pageX,pageY} = e.touches[0]; 
+         context.fill()
+         if(penType ==='pen'){
+              if(previousPoint){ 
+                  context.beginPath(); 
+                  context.moveTo(previousPoint.pageX,previousPoint.pageY) 
+                  context.lineTo(pageX,pageY)
+                  context.stroke() 
+                }
+               previousPoint = { pageX,pageY } // previousPoint = {  pageX:pageX, 
+                                               //                    pageY:pageY
+                                               //                   }
+              } 
+               else{ 
+                    } })
+     canvas.addEventListener('touchend',function(e){
+               previousPoint = null; 
+            })
+
+     save.onclick = function(){ 
+            var canvas = document.getElementById('app');
+            var data = canvas.toDataURL('image/png');
+            var newWindow = window.open('about:blank','image from canvas'); 
+            newWindow.document.write('
+<img src=' + `' ${data} '` + ' alt=f rom canvas />') }
+ // canvas.addEventListener('touchmove',function(e){ 
+ //     let {pageX,pageY}= e.touches[0]; // context.beginPath(); // context.moveTo(pageX,pageY); // }) // context.fillstyle = "green"; // context.strokestyle= "blue"; // context.beginPath() // context.moveTo(75,50); // context.lineTo(100,75); // context.lineTo(100,25); // context.lineTo(75,50);context.stroke();
+ </script>
+</body>
+
+</html>

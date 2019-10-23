@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>轮播</title>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    ol{
+        list-style: none;
+    }
+    .slide{
+        margin: 10px 100px;
+        border: 1px solid red;
+    }
+    .slide .window{
+        overflow: hidden;
+    }
+    .slide .window ol{
+        display: flex;
+        transition:transform 0.5s;
+    }
+    .slide .window ol li{
+        width: 100%;
+        flex-shrink: 0;
+        border: 1px solid black;
+        min-height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .controls >ol >li.active button{
+        background: red;
+    }
+    .controls{
+
+    }
+    .controls > ol{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .controls >ol button{
+        margin: 5px .2em;
+        background: black;
+        border: none;
+        display: block;
+        width: 1.2em;
+        height: 1.2em;
+        line-height: 1;
+        color: white;
+        border-radius: 50%;
+    }
+    </style>
+</head>
+
+<body>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <div class="slide">
+        <div class="window">
+            <ol>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+            </ol>
+        </div>
+        <div class="controls">
+            <ol>
+                <li><button type="">1</button></li>
+                <li><button type="">2</button></li>
+                <li><button type="">3</button></li>
+            </ol>
+        </div>
+    </div>
+    <script>
+        // $('.slide').on('click','.controls li',function(e){
+        //     let $li = $(e.currentTarget)
+        //     let index = $li.index()
+        //     $li.addClass('active').siblings().removeClass('active')
+        //     let width =$('.slide>.window').width()
+        //     $('.slide>.window>ol').css({
+        //         transform:'translateX(' + (-width*index) + 'px)'
+        //     })
+        // })
+        // let index = 0;
+        // setInterval(function(){
+        //     index += 1;
+        //     if(index === 3){
+        //         index = 0;
+        //     }
+        //     $('.slide .controls li').eq(index).trigger('click')
+        // },3000)
+        function go(index){
+            let width = $('.slide ,window').width()
+            $('.slide .controls li').eq(index).addClass('active').siblings().removeClass('active')
+            $('.slide .window ol').css({
+                transform:'translateX(' + (-width*index) +'px)'
+            })
+        }
+        $('.slide').on('click','.controls li',function(e){
+            let $li = $(e.currentTarget)
+            let index = $li.index()
+            go(index)
+        })
+        let index = 0;
+        setInterval(function(){
+            index += 1;
+            if(index === 3){
+                index = 0
+            }
+            go(index)
+        },3000)
+    </script>
+</body>
+
+</html>

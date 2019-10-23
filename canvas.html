@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = document.querySelector('#canvas')
+        context = canvas.getContext('2d')
+        let width = canvas.width,height=canvas.height;
+if (window.devicePixelRatio) {
+				canvas.style.width = width + "px";
+				canvas.style.height = height + "px";
+				canvas.height = height * window.devicePixelRatio;
+				canvas.width = width * window.devicePixelRatio;
+				context.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+//目测有一些效果
+context.fillstyle = 'green';
+        context.strokeStyle = 'blue';
+        context.beginPath();
+        context.moveTo(75,50);
+        context.lineTo(100,75)
+        context.lineTo(100,25)
+        context.lineTo(75,50)
+        // context.fill()
+        context.stroke()
+        
+        10.5.5.214 
+        10.5.5.212 
+        10.5.5.210
+</script>
+</body></html

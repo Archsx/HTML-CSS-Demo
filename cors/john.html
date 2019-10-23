@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"> 
+        
+    </script>
+</head>
+<body>
+    I'm John
+    <!-- <script src="http://qq.com/xxx.js">
+        
+</script> -->
+ <!-- <script>
+    // Window["zoidUser"] = {}
+    function xxx(data){
+        console.log("Get Data:" )
+        console.log(data)
+    }
+    var script =document.createElement('script')
+    // script.src = "http://qq.com/xxx.js?name=zoidUser";
+    script.src = "http://qq.com/xxx.js?callback=xxx";
+    // script.onload = function(){
+    //     console.log("yeah")
+    //     console.log(Window.zoidUser)
+    // }
+    document.head.appendChild(script)
+</script>  -->
+     <!-- <script>
+        let xhr = new XMLHttpRequest()
+        xhr.onload = function(){
+            console.log(xhr.responseText)
+        }
+        xhr.open("get","http://qq.com/xxx.js")
+        xhr.send()
+    </script>  -->
+    <script>
+        // jsonp('http://qq.com/xxx.js',function(data){
+        //     console.log(data)
+        // })
+        // function jsonp(url,fn){
+        //     var functionName = "Zoid" + parseInt(Math.random()*1000,10)
+        //     window[functionName] = fn;
+        //     var script = document.createElement('script')
+        //     script.src = url + "?callback=" + functionName;
+        //     document.head.appendChild(script)
+        // }
+
+
+
+        $.ajax({
+            url:"http://qq.com/xxx.js",
+            dataType:"jsonp",
+            success:function(data){
+                console.log("第一次")
+                console.log(data)
+            }
+        })
+        $.ajax({
+            url:"http://qq.com/xxx.js",
+            dataType:"jsonp",
+            success:function(data){
+                console.log("第2次")
+                console.log(data)
+            }
+        })
+        $.ajax({
+            url:"http://qq.com/xxx.js",
+            dataType:"jsonp",
+            success:function(data){
+                console.log("第3次")
+                console.log(data)
+            }
+        })
+    </script>
+    <!-- <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script> -->
+</body>
+</html>
+
+
+<!-- Object在作为JSON.parse的参数时会先转为string，默认toString实现会将Object转为"[object Object]"，JSON.parse将第一个字符'['理解为数组开始，第二字符'o'就不知道怎么处理了。 -->

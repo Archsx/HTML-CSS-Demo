@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .parent{
+        display: flex;
+        background: #ddd;
+        margin: 1px;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+    .child{
+        background: white;
+        margin: 1px;
+        width: 100px;
+    }
+    .child:nth-child(3){
+        align-self: center;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+        1 <br>    
+        1 <br>    
+        1 <br>    
+        1 <br>    
+        1 <br>    
+        </div>
+        <div class="child">
+        2 <br>    
+        2 <br>    
+        2 <br>    
+        </div>
+        <div class="child">
+            3 <br>
+        </div>
+    </div>
+</body>
+</html>

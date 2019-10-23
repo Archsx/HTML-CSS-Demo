@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <app>
+            <div slot="a">
+            {{message}}
+            </div>
+            <div slot="b">你好</div>
+        </app>
+    </div>
+    <script>
+        Vue.component('app',{
+            template:'\
+           <div> \
+           Hello \
+           <slot name="a"></slot>\
+           <slot name="b"></slot>\
+           </div> \
+            '
+        })
+        new Vue({
+            el:'#app',
+            data:{
+                message:'world'
+            }
+        })
+        </script> 
+</body>
+</html>

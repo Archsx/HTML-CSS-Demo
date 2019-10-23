@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var script = document.createElement('script')
+        script.src = "http://qq.com/xxx.js"
+        script.onload = function(){
+            console.log("加载成功")
+        }
+        document.body.appendChild(script)
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- xxx.js
+
+console.log({
+    "name":"frank",
+    "age":10000
+}) -->
+
+
+ <!-- 结果是:
+{name:"frank",qb:10000}
+加载成功 
+注意先执行的是script标签引入的js的内容
+然后才执行onload事件注册的回调函数 -->

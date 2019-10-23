@@ -1,0 +1,124 @@
+var reg = /<%[^%>]%>/g 
+var reg = new RegExp('<%[^%>]%>','g')
+/**
+ * g alobal 全文搜索，不添加的话匹配到第一个就停止了
+ * i ignore case,忽略大小写，默认对大小写敏感
+ * m mutiple 多行搜索 "ruoyu123hello\nruoyu456\nruoyu789".match(/^ruoyu\d{3}/g)   [ 'ruoyu123' ]
+                      "ruoyu123hello\nruoyu456\nruoyu789".match(/^ruoyu\d{3}/mg)  [ 'ruoyu123', 'ruoyu456', 'ruoyu789' ]                  
+ */
+
+[]匹配一个字符  注意是一个字符！！！！！！
+
+
+ var reg1 = /[abc123]/
+ var reg2 = /[^abc]/,
+            /[0-9]/,
+            /[0-9a-zA-Z]/,
+            /[0123456789]/,
+            /\./ == /[^\r\n]/  .表示除了回车和换行以外的任意字符            \r回车    \n换行
+            /\d/ == /[0-9]/   \d表示数字
+            /\D/ == /[^0-9]/  \D表示非数字字符
+            /\s/              \s表示空白符(tab，空格，换行，分页，回车等)
+            /\S/              \S表示非空白符
+            /\w/ ==/[0-9a-z_A-Z]/             \w表示字母、数字或者下划线
+            /\W/              \W表示非(字母、数字、下划线)
+
+
+
+^ 表示以什么开头
+$ 表示以什么结尾
+\b 表示单词边界(开头|结尾或者空白)
+"h3m h4m h2m".match(/^h\dm/g) 结果是['h3m']
+"h3m h4m h2m".match(/h\dm$/g)      ['h2m']
+"hello worhellold hello".match(/\bhello\b/g) ["hello", "hello"]
+"hello wor-hello-ld hello".match(/\bhello\b/g) ["hello", "hello"," hello"]
+
+
+
+量词
+
+/\d\d\d/
+
+
+? 出现零次或者一次（最多出现一次）
++ 出现一次或者多次（最少出现一次）
+* 出现任意次数（零次或者多次）
+{n} 出现n次
+{n,m} 出现n到m次
+{n,}至少出现n次
+{,m}最多出现m次
+
+
+"a12345b6789cde".match(/[a-z]\d?/g)  结果是["a1","b6","c","d","e"]
+"a12345b6789cde".match(/[a-z]\d+/g)  结果是["a12345","b678"]
+"a12345b6789cde".match(/[a-z]\d*/g)  结果是["a12345","b678","c","d","e"]
+"a12345b6789cde".match(/[a-z]\d{5}/g)  结果是["a12345"]
+
+
+默认情况下我们是贪婪模式，即尽可能多的匹配，在量词后加上?则可以尽量少的匹配
+"123456789".match(/\d{3,5}/g)       ["12345","6789"]
+"123456789".match(/\d{3,5}?/g)      ["123","456","789"]
+
+
+()表示分组
+
+"hellohello".match(/hello{2}/g) null
+"hellohello".match(/(hello){2}/g) ["hellohello"]
+"hellohelloworld".match(/(hello){2}(world)?/g) "hellohelloworld"
+
+|表示或
+
+(Byron|Casper){20}
+
+
+前瞻
+exp1(?=exp2) 匹配后面是exp2的exp1;
+exp1(?!exp2) 匹配后面不是exp2的exp1;
+(/good(?=Byron)/).exec('goodByron123');//["good"];
+(/good(?=Byron)/).exec('goodCasper123');//null;
+
+
+RegExp.prototype.test(str)
+测试str能否匹配正则表达式，如果能则返回true，否则返回false
+
+
+
+
+
+
+
+
+
+var str = "hallo jirengu hbllo jirengu hcllo jirengu"
+var reg = /h[a-z]llo/g
+
+str = str.replace(reg,"hello")
+//'hello jirengu hello jirengu hello jirengu'
+
+
+
+var str = "hallo jirengu hbllo jirengu hcllo jirengu"
+var reg = /h[a-z]llo/g
+str = str.replace(reg,function(value,index,originalStr){
+    return value[0].toUpperCase()+value.substr(1)
+})
+//"Hallo jirengu Hbllo jirengu Hcllo jirengu"
+
+
+
+
+
+var str = "hallo jirengu hbllo jirengu hcllo jirengu"
+var reg = /h[a-z]llo/g
+str = str.replace(reg,function(value,index,originalStr){
+    return "hello"
+})
+//"hello jirengu hello jirengu hello jirengu"
+
+
+
+
+
+String.prototype.split(reg)
+
+"a1b2c3d".split(/\d/);//["a","b","c","d"]

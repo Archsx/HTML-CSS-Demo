@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #modal-overlay{
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index:999;
+        background-color:rgba(0,0, 0,0.3);
+    }
+    .modal-data{
+        width: 300px;
+        margin: 100px auto;
+        background: #fff;
+        border: 1px solid #000;
+        text-align: center;
+        padding: 15px; 
+    }
+    </style>
+</head>
+<body>
+    <button type="" class="btn2">show</button>
+    <div id="modal-overlay">
+        <div class="modal-data">
+            <p>简单的模态框</p>
+            <p>点击<a href="#" class="btn1">这里</a>关闭</p>
+        </div>
+    </div>
+    <script>
+        function overlay() {
+            var el = document.querySelector('#modal-overlay');
+            el.style.display = (el.style.display === "none")? "block":"none";
+        }
+        let btn1 = document.querySelector('.btn1')
+        btn1.addEventListener('click',function(){
+            overlay()
+        })
+        let btn2 = document.querySelector('.btn2')
+        btn2.addEventListener('click',function(){
+            overlay()
+        })
+        let wrap = document.querySelector('#modal-overlay')
+        wrap.addEventListener('click',function(){
+            overlay()
+
+        })
+        let modal = document.querySelector('.modal-data')
+        modal.addEventListener('click',function(e){
+            e.stopPropagation()
+        })        
+
+    </script>
+</body>
+</html>

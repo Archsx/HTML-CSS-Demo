@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <my-component @add="update"></my-component>
+    </div>
+    <!-- 注意这里的数据流向，子组件监听click事件，然后触发子组件里面的handle函数，这个函数发布add事件，并把this.count的值传了出去
+    (视频里面说这是观察者模式，我觉得有点像发布订阅模式),然后父元素app监听了add事件，触发了update函数，这里需要注意的是下面的
+    update函数的写法，注意update函数的参数就是handle函数里emit的this.count。这就是子组件向父组件通信的过程。 -->
+    <script>
+        Vue.component('my-component', {
+            template: '\
+            <div>\
+            <button @click="handle">+1</button>\
+            </div>\
+            \
+            ',
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            methods: {
+                handle: function (val) {
+                    this.count++;
+                    this.$emit('add', this.count)
+                }
+            }
+        })
+        new Vue({
+            el: '#app',
+            data: {
+                pCount: null
+            },
+            methods: {
+                // update: function (val) {
+                //     this.pCount = val;
+                //     console.log(this.pCount)
+                //    }
+                update:function(val){
+                    console.log(val)
+                }
+                
+            }
+        })
+    </script>
+</body>
+
+</html>

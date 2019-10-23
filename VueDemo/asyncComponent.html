@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+    <com-a></com-a>
+     <!-- <script type="text/x-template" id="my-com">
+        <div></div>
+     </script> 没有使用webpack或者glup的时候可行  -->
+    </div>
+    <script>
+        Vue.component('com-a',function(resolve,reject){
+            window.setTimeout(function() {
+                resolve({
+                    template:'<div>来自异步组件的内容</div>'
+                })
+            }, 2000);
+        })
+        new Vue({
+            el:'#app',
+            created:function(){
+                this.$nextTick(()=>{
+
+                })
+            }
+        })
+    </script>
+</body>
+</html>

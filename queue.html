@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="" id="takeNumber">取号</button>
+    <div id="output">
+
+    </div>
+    <div id="screenDiv">
+
+    </div>
+    <script>
+    /*
+        两点思考：1>很多时候都要用到一个共同的变量 queue，函数式编程是否更有利？
+                2>queue.length无法实时更新，怎么解决？Rxjs?generator?发布订阅模式？
+    */
+        var queue = [];
+        function fetch(name){
+            let number = Math.round(Math.random()*10000)
+            queue.push(number)
+            output.textContent = `你取得号码是${number},你前面还有${queue.length-1}位用户等待`
+            return number;
+        }
+        function inform(){
+            if(queue.length === 0){
+                return;
+            }
+            let currentNumber = queue.shift();
+            screenDiv.textContent = `请${currentNumber}到服务台`
+        }
+
+        takeNumber.onclick = function(){
+            fetch();
+        }
+        setInterval(function(){
+            inform();
+        },3000)
+
+    </script>
+</body>
+
+</html>

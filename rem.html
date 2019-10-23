@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .two {
+            width: 0.6rem;
+            height: 0.3rem;
+            font-size: 0.03rem;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="two">
+        你好
+    </div>
+    <script>
+    alert(document.documentElement.clientWidth)
+    document.write(`
+        <style>
+        html{
+            font-size: ${document.documentElement.clientWidth}px;
+        }
+        </style>
+    `)
+    </script>
+</body></html>

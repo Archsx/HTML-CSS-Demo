@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resume_copy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul,ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none
+        }
+        h1,h2,h3,h4,h5,h6{
+            font-weight: normal;
+        }
+
+        .icon {
+            width: 1em;
+            height: 1em;
+        }
+        /* .icon1{
+        width: 5em;height: 5em;
+    } 这里是为了测试引入多个icon怎么定义不同的大小等属性，方法是使用不同的class*/
+
+        body .tabs {
+            margin: 34px auto 0;
+            border: 4px solid rgb(237, 244, 237);
+            max-width: 800px;
+        }
+        /* body .tabs{
+        display: flex;
+    }  这里尤其需要注意，这样写的话是让.tabs下面的ol水平排列！！！我们其实是想让ol里面的li水平排列！！！所以应该是下面的写法！！*/
+
+        body .tabs ol {
+            display: flex;
+        }
+
+        body .tabs ol li {
+            /* flex-grow: 1; */
+            width: 25%;
+            /* text-align: center; */
+            padding: 8px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        body .tabs ol li.active {
+            background: rgb(237, 244, 237);
+        }
+
+        body .tabs ol li.active::after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            position: absolute;/*注意这里，上面设置position relative的是li。*/
+            border: 10px solid transparent;
+            border-top-color: red;
+            top: 100%;
+
+            left: 50%;
+            margin-left: -10px;
+            margin-top: 10px;
+        }
+
+        body .tabs ol li .icon {
+            margin-right: .3em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <svg class="icon1">
+        <use xlink:href = "#icon-start"></use>
+    </svg> -->
+    <script src="http://at.alicdn.com/t/font_ev51xtanct5u3di.js">
+    </script>
+    <section class="bestProjects">
+        <nav class="tabs">
+            <ol>
+                <li>
+                    <svg class="icon">
+                        <use xlink:href="#icon-favorites"></use>
+                    </svg>项目</li>
+                <li>
+                    <svg class="icon">
+                        <use xlink:href="#icon-pin"></use>
+                    </svg>工作经历</li>
+                <li>
+                    <svg class="icon">
+                        <use xlink:href="#icon-rfqquantity"></use>
+                    </svg>技能</li>
+                <li>
+                    <svg class="icon">
+                        <use xlink:href="#icon-electronics"></use>
+                    </svg>自我介绍</li>
+            </ol>
+
+        </nav>
+    </section>
+    <style>
+        body .tab-content section {
+            display: none;
+            min-height: 500px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+
+        body .tab-content section.active {
+            display: block;
+        }
+
+        img {
+            width: 400px;
+            /* height: 300px; */
+            max-width: 100%;
+             /* vertical-align: top;  */
+        }
+
+        section.projects>ol {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 16px 0;
+        }
+
+        section.projects>ol>li {
+            width: 30%;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border: 1px solid red;
+        }
+
+        section.projects > ol > li h2 {
+            font-size: 14px;
+            font-weight: normal;
+            margin-top: 4px;
+        }
+        section.projects .image-wrapper{
+            position: relative;
+            display: block;
+        }
+        section.projects .image-wrapper p{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255, 255, 0.5);
+             display: none; 
+            color:black ;
+            padding: 16px;
+        }
+        section.projects .image-wrapper:hover p{
+            display: block;
+            
+        }
+    </style>
+    <div class="tab-content">
+        <section class="projects">
+            <ol>
+                <li>
+                    <a class="image-wrapper" href="#">
+                        <img src="https://i.loli.net/2017/07/24/5975bedc82f59.png" alt="">
+                        <p>学会使用JQuery的一些api,以及苹果风格的轮播</p>
+                    </a>
+                    
+                        <h2>一个苹果风格的轮播</h2>
+                </li>
+                <li>
+                    <a class="image-wrapper" href="#">
+                        <img src="https://i.loli.net/2017/07/24/5975bedc82f59.png" alt="">
+                        <p>一个canvas属性为原理的绘画板demo</p>
+                    </a>
+                        <h2>一个简易绘画板</h2>
+                </li>
+                <li>
+                    <a class="image-wrapper" href="#">
+                        <img src="https://i.loli.net/2017/07/24/5975bedc82f59.png" alt="">
+                        <p>学习使用commander的使用</p>
+                    </a>
+                        <h2>一个命令行翻译小工具</h2>
+                </li>
+                <li>
+                    <a class="image-wrapper" href="#">
+                        <img src="https://i.loli.net/2017/07/24/5975bedc82f59.png" alt="">
+                        <p>练习CSS布局</p>
+                    </a>
+                        <h2>个人简历静态页面</h2>
+                </li>
+
+            </ol>
+            </ol>
+        </section>
+        <section class="experience"></section>
+        <style>
+        section.skills h2{
+            text-align: center;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            /* 这样上面产生了父子元素之间外边距合并问题，解决的方法是给父元素添加padding或者border使两者的外边距不接触 */
+        }
+        section.skills ul ul{
+            display: none;
+        }
+        section.skills >ul>li{
+            position: relative;
+        }
+        section.skills >ul>li::before{
+            content: "";
+            display: block;
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: red;
+            right: 100%;
+        }
+
+        </style>
+        <section class="skills">
+            <h2>我的技能</h2>
+            <ul>
+                <li>静态页面制作技术
+                    <ul>
+                        <li>CSS3动画</li>
+                        <li>Flex布局</li>
+                        <li>CSS2布局</li>
+                    </ul>
+                </li>
+                <li>移动端页面
+                    <ul>
+                        <li>动态rem</li>
+                    </ul>
+                </li>
+                <li>与后端配合开发
+                    <ul>
+                        <li>了解http协议</li>
+                        <li>了解HTTP请求，响应的定义</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="introduction"></section>
+
+
+
+
+
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $('.tabs').on('mouseenter', 'li', function (e) {
+            let $li = $(e.target);
+            let index = $li.index();
+            $('.tab-content section').eq(index).addClass('active').siblings('.active').removeClass('active');
+            $li.addClass('active').siblings('.active').removeClass('active');
+        })
+    </script>
+</body>
+
+</html>

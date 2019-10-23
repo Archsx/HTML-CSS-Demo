@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    #xparent{
+        height: 200px;
+        background: greenyellow;
+        padding: 20px;
+    }
+    #xchild{
+        width: 100px;
+        height: 100px;
+        background: red;
+    }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="xparent">
+        <div id="xchild">
+            
+        </div>
+    </div>
+<script>
+    xparent.addEventListener('click',function(){
+        console.log('parent clicked')
+    })
+    xchild.addEventListener('click',function(e){
+        console.log('child clicked');
+        e.stopPropagation()
+
+    })
+
+</script>
+</body>
+</html>

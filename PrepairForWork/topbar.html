@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    div#topbar {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    #topbar>ul {
+      display: flex;
+    }
+
+    #topbar>ul>li {
+      width: 33.3%;
+    }
+
+    /* #topbar>ul>li li{
+      display: none;
+    }
+    #topbar>ul>li:hover li{
+      display: block
+    } */
+    #topbar>ul ul{
+      display: none;
+    }
+    #topbar li:hover >ul{
+      display: block;
+    }
+    .green {
+  line-height: 1.1;
+  border: solid limegreen;
+}
+.red {
+  line-height: 1.1em;
+  border: solid red;
+}
+h1 {
+  font-size: 30px;
+}
+.box {
+  /* width: 18em; */
+  /* display: inline-block; */
+  vertical-align: top;
+  font-size: 15px;
+}
+  </style>
+</head>
+
+<body>
+  <div id="topbar">
+    <ul>
+      <li>
+        <span>News</span>
+        <ul>
+          <li>Hot</li>
+          <li>Latest</li>
+          <li>Liked</li>
+        </ul>
+      </li>
+      <li>
+        <span>Player</span>
+        <ul>
+          <li>C.R</li>
+          <li>Uzi</li>
+          <li>Me</li>
+        </ul>
+      </li>
+      <li>
+        <span>About</span>
+        <ul>
+          <li>Copyright&copy;</li>
+        </ul>
+      </li>
+
+    </ul>
+
+
+
+
+  </div>
+  <div class="box green">
+      <h1>Avoid unexpected results by using unitless line-height</h1>
+       length and percentage line-heights have poor inheritance behavior ...
+     </div>
+     
+     <div class="box red">
+      <h1>Avoid unexpected results by using unitless line-height</h1>
+       length and percentage line-heights have poor inheritance behavior ...
+     </div>
+</body>
+
+</html>

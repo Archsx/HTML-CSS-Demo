@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        background: #e2ded2;
+        
+    }
+    ol{
+        list-style: none;
+    }
+    .wrap{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        height: 456px;
+        border: 1px solid #cecabe;
+        overflow: hidden;
+    }
+    .tab{
+        border: 1px solid red;
+    }
+    .tab::after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .tab>ol>li{
+        float: left;
+        width: 50%;
+        height: 79px;
+        border: 1px solid #dbd5c7;
+        text-align: center;
+        padding: 10px;
+
+    }
+    .tab>ol>li>p{
+        
+    }
+    .content-wrap{
+    }
+    .content{
+        height: 360px;
+        border: 1px solid red;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        <div class="tab">
+            <ol>
+               <li>
+                   <p>how buying</p>
+                   <p>works</p>
+               </li> 
+               <li>
+                   <p>how selling</p>
+                   <p>works</p>
+               </li> 
+            </ol>
+        </div>
+        <div class="content-wrap">
+            <div class="content">
+                1
+            </div>
+            <div class="content">
+                2
+            </div>
+        </div>
+    </div>
+</body>
+</html>

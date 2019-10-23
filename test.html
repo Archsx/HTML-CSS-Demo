@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .parent{
+        background: blue;
+        padding: 20px;
+    }
+    .child{
+        background: green;
+        width: 200px;
+        height: 200px;
+        position: relative;
+        top: 300px;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">
+            
+        </div>
+    </div>
+    <a id="xxx"  href="http://www.baidu.com" onclick="return false" >click</a>
+    <script>
+        var p = document.querySelector('.parent')
+        p.onclick = function(){
+            console.log('parent clicked')
+        }
+        // xxx.addEventListener('click',function(e){
+        //     e.preventDefault();
+        // })
+        // xxx.onclick = function(){
+        //     return false
+        // }
+    </script>
+</body>
+</html>

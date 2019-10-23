@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ol{
+        list-style: none;
+    }
+    .tabs{
+        border: 1px solid red;
+        display: flex;
+        justify-content: space-between;
+    }
+    .tabs >li {
+        border: 1px solid black;
+        padding: 0.3em 1em;
+        flex-grow: 1;
+    }
+    .tabs >li.active{
+        background: #ddd;
+    }
+    .tabs-content{
+
+    }
+    .tabs-content>li{
+        display: none;
+        border: 1px solid red;
+        min-height: 20em;
+        justify-content: center;
+        align-items: center;
+    }
+    .tabs-content>li.active{
+        display: flex;
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="tabs-container">
+        <ol class="tabs">
+            <li class="active"><span> 选项卡1</span> </li>
+            <li>选项卡2 </li>
+        </ol>
+        <ol class="tabs-content">
+            <li class="active">1</li>
+            <li>2</li>
+        </ol>
+    </div>
+    <script>
+        /*let tabItems = document.querySelectorAll('.tabs>li');
+        tabItems[0].addEventListener('click',function(e){
+            let li = e.currentTarget;
+            li.classList.add('active')
+            let next = li.nextSibling
+            while (next.nodeType ===3){
+                next = next.nextSibling
+            }
+
+            next.classList.remove('active')
+            li.parentNode.parentNode.children[1].children[0].classList.add('active')
+            li.parentNode.parentNode.children[1].children[1].classList.remove('active')
+        })
+        tabItems[1].addEventListener('click',function(e){
+            let li = e.currentTarget
+            li.classList.add('active')
+            let prev = li.previousSibling
+            while(prev.nodeType === 3){
+                prev = prev.previousSibling
+            }
+            prev.classList.remove('active')
+            li.parentNode.parentNode.children[1].children[0].classList.remove('active')
+            li.parentNode.parentNode.children[1].children[1].classList.add('active')
+        })*/    
+
+       /* $('.tabs').on('click',function(e){
+            console.log('----------------------')
+            console.log(this)//这个和被监听的元素一致
+            console.log('----------------------')
+            console.log(e)
+            console.log(e.target)//<span>,不论事件冒泡什么的，e.target永远是直接点击的元素
+            console.log(e.currentTarget)//<li class="active"> 同this
+        })*/
+
+        $('.tabs').on('click','li',function(e){
+            let li = e.currentTarget
+            let $li = $(li);
+            let index = $li.index();
+            $li.addClass('active')
+            $li.siblings('.active').removeClass('active')      
+            $li.parent().next().children().eq(index).addClass('active')
+            $li.parent().next().children().eq(index).siblings('.active').removeClass('active')
+        })
+
+        /*let tabItems = document.querySelector('.tabs');
+        let contentItems = document.querySelectorAll('.tabs-content>li');
+        tabItems.addEventListener('click',function(e){
+            let item = e.target;
+            console.log(item)
+
+            item.classList.add('active')
+            item.siblings.classList.remove('active')
+
+        })*/
+
+
+    </script>
+</body>
+
+</html>

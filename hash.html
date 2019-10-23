@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <select id="color">
+        <option value="" selected   disabled  >请选择一种颜色</option>
+        <option value="red">红</option>
+        <option value="orange">橙</option>
+        <option value="yellow">黄</option>
+        <option value="green">绿</option>
+        <option value="cyan">青</option>
+        <option value="blue">蓝</option>
+        <option value="purple">紫</option>
+    </select>
+    <script>
+        var colors = {
+            red: "#ff0000",
+            orange: "#ffa500",
+            yellow: "#ffff00",
+            green:"#008000",
+            cyan:"#00ffff",
+            blue:"#0000ff",
+            purple:"#800080"
+        }
+        color.onchange = function(){
+            console.log(color.value)
+            document.body.style.backgroundColor = colors[color.value];
+        }
+    </script>
+</body></html>

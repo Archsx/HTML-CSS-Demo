@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="example2">
+        <counter></counter>
+        <counter></counter>
+        <counter></counter>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <script>
+        var data = {counter:0}
+        Vue.component('counter',{
+            template:'<button v-on:click="counter+=1">{{counter}}</button>',
+            // data:function(){
+            //     return data
+            // }    
+            data:function(){
+                return {
+                    counter:0
+                }
+            }
+        })
+        new Vue({
+            el:'#example2'
+        })
+    </script>
+</body>
+</html>

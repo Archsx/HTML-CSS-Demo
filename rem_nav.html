@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        font-size: 0.04rem;/*这里也是假设一行只能25个字，所以字体大小为1/25rem*/
+        /*font-size: 4vw;这是替代rem的更简单的方法,下同*/
+    }
+    ol{
+        list-style: none;
+        display: flex;
+        border-top: 1px solid black;
+        border-left: 1px solid black;
+    }
+    ol li{
+        width: 0.25rem;
+        /*width:25vw;*/
+        /*height: 0.125rem;动态rem其实有一点前提，就是比例系数是多少是已知的，比如这里我希望宽度是高度的一半，0.125rem就是这样来的*/
+        border-right: 1px solid black;
+        border-bottom: 1px solid black;
+        text-align: center;
+        line-height: 0.125rem;/*这样写的话，就可以不写高度了，同时也能让字水平居中*/
+        /*line-height: 12.5vw;*/
+    }
+    </style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script >
+        document.write(`
+        <style>
+        html {
+            font-size:${document.documentElement.clientWidth}px
+        }
+        </style>`)
+    </script>
+    <div class="nav">
+        <ol>
+            <li>导航1</li>
+            <li>导航2</li>
+            <li>导航3</li>
+            <li>导航4</li>
+        </ol>
+    </div>
+</body>
+</html>

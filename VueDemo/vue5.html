@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js">
+</script>
+<div id="app">
+    <ol>
+        <li v-for="(repo,index) in repos">
+            {{repo.full_name}}
+        </li>
+    </ol>
+</div>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            repos:[]
+        },
+        created(){
+            axios.get('https://api.github.com/users/Archsx/repos').then(({data})=>{
+                console.log(data)
+                this.repos = data
+            })
+        }
+
+    })
+</script>
+</body>
+
+</html>

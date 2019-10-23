@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.4/vue.min.js"></script>
+    <div id="app">
+        <ol>
+            <li v-for="yyy in people" :key="yyy.id">
+                <xxx :name="yyy.name" :age="yyy.age"></xxx>
+            </li>
+        </ol>
+    </div>
+</body>
+<script>
+    
+Vue.component('xxx',{
+    template:`
+        <div class="userCard">
+            {{name}} {{age}}
+        </div>
+    `,
+    props:["name","age"]
+})
+
+new Vue({
+    el:"#app",
+    data:{
+        people:[
+            {name:"Frank",age:18,id:1},
+            {name:"jack",age:12,id:2}
+        ]
+    }
+})
+</script>
+</html>
